@@ -1,0 +1,43 @@
+version: '3.1'
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./public_html:/public_html
+      - ./conf.d:/etc/nginx/conf.d
+    networks:
+      - nginxphp
+  
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: php:7.4-fpm-alpine
+    volumes:
+      - ./public_html:/public_html
+    expose:
+      - 9000
+    networks:
+      - nginxphp
+      
+  db:
+    image: mariadb:10.3
+    restart: always
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+  
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 81:80
+    environment:
+      - PMA_HOST=db
+    
+networks:
+  nginxphp:
