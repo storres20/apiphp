@@ -7,8 +7,10 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // Conecta a la base de datos  con usuario, contraseña y nombre de la BD
 //$servidor = "localhost"; $usuario = "root"; $contrasenia = ""; $nombreBaseDatos = "empleados";
-$servidor = "localhost:81"; $usuario = "root"; $contrasenia = "123456"; $nombreBaseDatos = "empleados";
-$conexionBD = new mysqli($servidor, $usuario, $contrasenia, $nombreBaseDatos);
+//$servidor = "localhost"; $usuario = "root"; $contrasenia = "123456"; $nombreBaseDatos = "empleados";
+$host = "db"; $username = "root"; $passwd = "123456"; $dbname = "empleados";
+//$conexionBD = new mysqli($servidor, $usuario, $contrasenia, $nombreBaseDatos);
+$conexionBD = new mysqli($host, $username, $passwd, $dbname);
 
 
 // Consulta datos y recepciona una clave para consultar dichos datos con dicha clave
