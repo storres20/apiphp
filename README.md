@@ -32,8 +32,20 @@ git clone https://github.com/storres20/apiphp.git
 
 ### Run
 ```
----docker - coming soon
+docker-compose up -d
 ```
+
+### PHPMYADMIN
+* localhost:81
+* Log in
+* User: root / Password: 123456
+* Click on "empleados" database
+* Import "empleados.sql" from datab/empleados.sql
+
+### Try API php with Browser or POSTMAN
+* localhost:80
+* localhost:80?consultar=3
+* ...
 
 
 ## Información adicional
@@ -41,10 +53,12 @@ git clone https://github.com/storres20/apiphp.git
 ### 🔭Skils:
 Tecnologias utilizadas
 
-| `🔭Frontend` | `⚡Backend` | `📫Database` |
-| ------ | ------ | ------ | 
-|  | PHP | Mysql |
-|  |  |  |
+| `🔭Frontend` | `⚡Backend` | `📫Database` | `🐳Docker` |
+| ------ | ------ | ------ | ------ | 
+|  | PHP |  | Nginx | 
+|  |  |  | PHP 7.4 | 
+|  |  |  | Mariadb 10.3 | 
+|  |  |  | PHPMYADMIN | 
 
 
 ## 🌱 Beta version
