@@ -11,10 +11,10 @@ services:
       - nginxphp
   
   php:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: php:7.4-fpm-alpine
+    build: './php/'
+      #context: .
+      #dockerfile: /php/Dockerfile
+    #image: php:7.4-fpm-alpine
     volumes:
       - ./public_html:/public_html
     expose:
@@ -23,14 +23,22 @@ services:
       - nginxphp
       
   db:
-    image: mariadb:10.3
+    build: './mysql/'
+      #context: .
+      #dockerfile: /mysql/Dockerfile
+    #image: mariadb:10.3
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_USER: root
+      MYSQL_DATABASE: empleados
       MYSQL_PASSWORD: 123456
       MYSQL_ROOT_PASSWORD: 123456
+    #volumes:
+    #  - ./datab:/docker-entrypoint-initdb.d
+    networks:
+      - nginxphp
   
-
   phpmyadmin:
     image: phpmyadmin
     restart: always
@@ -38,6 +46,8 @@ services:
       - 81:80
     environment:
       - PMA_HOST=db
+    networks:
+      - nginxphp
     
 networks:
   nginxphp:
